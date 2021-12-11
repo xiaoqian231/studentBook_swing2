@@ -9,12 +9,16 @@ import javax.swing.table.AbstractTableModel;
 public class StudentTableModel extends AbstractTableModel {
     private ClassContainer classContainer;
     private String columnNames[] = new String[]{"name", "family name ","status","grade"};
-    private final Group emptyGroup = new Group();
 
-    private Group aGroup = emptyGroup;
+    private Group group ;
     public StudentTableModel(Group group ){
-        this.aGroup = aGroup;
+        this.group = group;
     }
+    public void setGroup(Group group){
+        this.group = group;
+    }
+
+
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -23,7 +27,7 @@ public class StudentTableModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        Integer temp = aGroup.StudentNum();
+        Integer temp = group.StudentNum();
         if (temp == null) return 0;
         return temp;
     }
@@ -36,10 +40,10 @@ public class StudentTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
          switch (columnIndex){
-            case 0-> {return aGroup.getStudentByID(rowIndex).getName();}
-             case 1->{return aGroup.getStudentByID(rowIndex).getLastName();}
-             case 2->{return aGroup.getStudentByID(rowIndex).getStatus();}
-             case 3->{return aGroup.getStudentByID(rowIndex).getNumberOfCredits();}
+            case 0-> {return group.getStudentByID(rowIndex).getName();}
+             case 1->{return group.getStudentByID(rowIndex).getLastName();}
+             case 2->{return group.getStudentByID(rowIndex).getStatus();}
+             case 3->{return group.getStudentByID(rowIndex).getNumberOfCredits();}
         }
         return null;
     }
@@ -52,10 +56,10 @@ public class StudentTableModel extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         switch (columnIndex){
-            case 0-> {aGroup.getStudentByID(rowIndex).setName((String) aValue); }
-            case 1->{ aGroup.getStudentByID(rowIndex).setLastName((String) aValue);}
+            case 0-> {group.getStudentByID(rowIndex).setName((String) aValue); }
+            case 1->{ group.getStudentByID(rowIndex).setLastName((String) aValue);}
            // case 2->{ group.getStudentByID(rowIndex).setStatus();}
-            case 3->{ aGroup.getStudentByID(rowIndex).setNumberOfCredits(Integer.parseInt((String)aValue ));}
+            case 3->{ group.getStudentByID(rowIndex).setNumberOfCredits(Integer.parseInt((String)aValue ));}
         }
     }
 }

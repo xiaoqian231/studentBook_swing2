@@ -20,16 +20,15 @@ public class addStudent extends JFrame{
     private JButton submitButton;
     private JButton cancelButton;
     private JComboBox StuStatus;
-    private Group aGroup;
-    public addStudent(Group group) {
-        this.aGroup = aGroup;
-    }
+    private ClassContainer classContainer;
 
-    public addStudent(String title) throws HeadlessException {
+
+    public addStudent(String title,ClassContainer classContainer,int index) throws HeadlessException {
         super("Add student");
         setContentPane(addStudent);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(400, 300));
+        this.classContainer = classContainer;
         pack();
 
         this.setLocationRelativeTo(null);
@@ -51,17 +50,18 @@ public class addStudent extends JFrame{
                 int Year=Integer.parseInt(stuYearBirthTextField.getText());
                 double Credits=Double.parseDouble(stuCreditsTextField.getText());
                 int id = Integer.parseInt(stuIDTextField.getText());
-                StudentCondition Condition=(StudentCondition)StuStatus.getSelectedItem();
+                //StudentCondition Condition=(StudentCondition)StuStatus.getSelectedItem();
                 student.setName(StuName);
                 student.setLastName(StuLastName);
                 student.setYearOfBirth(Year);
                 student.setNumberOfCredits(Credits);
                 student.setId(id);
-                student.setStatus(Condition);
-                aGroup.addStudent(student);
+               // student.setStatus(Condition);
+                classContainer.getClassByID(index).addStudent(student);
+
                 JOptionPane.showMessageDialog(null, "add successfully!", "Information", JOptionPane.PLAIN_MESSAGE);
                 addStudent.super.dispose();
-
+                System.out.println(classContainer.getClassByID(index));
             }
         });
     }

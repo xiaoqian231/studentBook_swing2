@@ -1,5 +1,6 @@
 package StudentBook;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Main {
@@ -61,5 +62,7 @@ public class Main {
 
         CON.removeClass("class1");
         CON.removeClass("class5");
+
+        System.out.println("ID class"+CON.getClassByID(1));
     }
 }

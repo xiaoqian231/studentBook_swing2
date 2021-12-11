@@ -34,7 +34,7 @@ public class GroupTableModel extends AbstractTableModel {
                 return classContainer.getClassByID(rowIndex).getGroupName();
             }
             case 1 -> {
-                return classContainer.getClassByID(rowIndex).StudentNum();
+                return classContainer.getClassByID(rowIndex).getMaxNumberStu();
             }
         }
         return null;
@@ -57,6 +57,7 @@ public class GroupTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0 -> {
                 classContainer.getClassByID(rowIndex).setGroupName((String) aValue);
+
             }
             case 1 -> {
                 classContainer.getClassByID(rowIndex).setMaxNumberStu(Integer.parseInt((String)aValue ));
