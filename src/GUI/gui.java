@@ -50,7 +50,7 @@ public class gui extends JFrame {
 
                 addGroup addGroup = new addGroup("add group", classContainer);
                 TableGroup.updateUI();
-
+                System.out.println("output at gui");
             }
         });
 

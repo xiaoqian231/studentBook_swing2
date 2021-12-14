@@ -40,6 +40,7 @@ public class addGroup extends JFrame {
             classContainer.addClass(groupName,capacity);
             JOptionPane.showMessageDialog(null, "add successfully!", "Information", JOptionPane.PLAIN_MESSAGE);
            addGroup.super.dispose();
+            System.out.println('1');
         });
 
 
